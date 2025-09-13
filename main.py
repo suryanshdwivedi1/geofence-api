@@ -1,4 +1,3 @@
-# main.py
 import os
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -6,10 +5,11 @@ from geopy.distance import geodesic
 from supabase import create_client, Client
 
 # --- Connect to your Supabase database ---
-# We get the URL and Key from "Environment Variables" for security.
-# This means we don't write our secret keys directly in the code.
-SUPABASE_URL = os.environ.get("https://zakreaighpiuixryxlxw.supabase.co")
-SUPABASE_KEY = os.environ.get("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpha3JlYWlnaHBpdWl4cnl4bHh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3NjExNTksImV4cCI6MjA3MzMzNzE1OX0.wzAUGTC-4zu6UE2pDeUGld-4xce1AzByLCo8oaTqUgU")
+# This is the corrected section. It looks for the variables by their NAME.
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+
+# Now, we create the client. This will only work if the variables are found.
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # --- FastAPI App ---
